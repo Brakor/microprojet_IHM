@@ -5,7 +5,8 @@ JFILES = Chambre.class \
 	  ChambreDeuxLitsSimples.class \
 	  ChambreLitDouble.class \
 	  ChambreLitSimple.class \
-	  Reservation.class
+	  Reservation.class \
+	  Projets_v1.java
 
 JC = javac
 
@@ -28,6 +29,9 @@ ChambreLitDouble.class : ChambreLitDouble.java Chambre.java
 
 ChambreLitSimple.class : ChambreLitSimple.java Chambre.java
 	$(JC) ChambreLitSimple.java Chambre.java
+
+Projets_V1.class : Projets_v1.java
+	$(JC) Projets_v1.java
 
 clean : 
 	-rm *.class 
