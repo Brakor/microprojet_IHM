@@ -9,10 +9,10 @@ public class View extends JFrame{
     public JPanel content = new JPanel();
     String[] listContent = {"card1", "card2"};
     public View(){
-	JFrame f = new Fenetre();
+	JFrame f = new JFrame();
 	f.setSize(1200,800);
         f.setLocation(0,10);
-	f.setTitle("Recherche de réservations");
+	f.setTitle("Gestion des réservations");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	JTextField numReservation = new JTextField("Numéro Réservation");
@@ -24,6 +24,18 @@ public class View extends JFrame{
 	panneau.setLayout(new GridBagLayout());
         GridBagConstraints contraintes = new GridBagConstraints();
 
+	/* Implémentation de toutes les contraintes pour chaque composant et ajout au GridBagLayout, les contraintes sont les suivantes :
+	   
+	   gridx : choix de la colonne d'affichage
+	   gridy : choix de la ligne d'affichage
+	   ipady : choix de la hauteur de l'élément
+	   fill : agrandissement de l'élément pour qu'il remplisse la case (peut remplir de manière : Horizontal, Vertical, Aucune, ou les deux
+	   anchor : pour placer le composant dans la case quand il est plus petit que la case
+	   insets : modifie l'espace entre chaque case, 4 paramètres : en bas, à gauche, à droite, en haut
+	   weightx : valeur qui va gérer l'espace restant horizontal
+	   gridwidth : taille de la case (peut faire la taille d'1 case, de 2 cases, ect ...)
+	*/
+	
         contraintes.gridx = 1;
         contraintes.gridy = 1;
         contraintes.ipady = 15;
@@ -32,45 +44,36 @@ public class View extends JFrame{
         contraintes.insets = new Insets(5,400,100,400);
         contraintes.weightx = 0.1;
         contraintes.gridwidth = 2;
-
         panneau.add(numReservation, contraintes);
 
         contraintes.insets = new Insets(5,400,5,10);
         contraintes.fill = GridBagConstraints.HORIZONTAL;
         contraintes.gridwidth = 1;
-        //contraintes.ipady = 15;
         contraintes.gridx = 1;
         contraintes.gridy = 2;
-
 	panneau.add(nomClient, contraintes);
 
 	contraintes.insets = new Insets(5,10,5,400);
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
-	//contraintes.ipady = 15;
 	contraintes.gridx = 2;
 	contraintes.gridy = 2;
-
 	panneau.add(prenomClient, contraintes);
 
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
-	//contraintes.ipady = 15;
 	contraintes.gridx = 2;
 	contraintes.gridy = 1;
-
 	panneau.add(rechercherNum, contraintes);
-
+	
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
-	//contraintes.ipady = 15;
 	contraintes.gridx = 2;
 	contraintes.gridy = 3;
-
 	panneau.add(rechercherNom, contraintes);
 
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.gridx = 2;
 	contraintes.gridy = 0;
-		
 	panneau.add(titre, contraintes);
+
 	cards.add(panneau, listContent[0]);
 	f.add(cards);
 	f.setVisible(true);
@@ -92,7 +95,8 @@ public class View extends JFrame{
 	JCheckBox possibChambre = new JCheckBox("Test"); //à modifier
 	content.setLayout(new GridBagLayout());
 	GridBagConstraints contraintes = new GridBagConstraints();
-	
+
+	/* Implémentation du GridBagLayout avec toutes les contraintes pour chaque élément */
 	contraintes.gridx = 1;
 	contraintes.gridy = 0;
 	contraintes.ipady = 20;
@@ -126,6 +130,7 @@ public class View extends JFrame{
 	contraintes.gridy = 2;
 	content.add(possibChambre, contraintes);
 
+	/* Ajout du Panel contenant tous les éléments au CardLayout */
 	cards.add(content, listContent[1]);
     }
 
