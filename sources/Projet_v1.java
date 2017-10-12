@@ -1,72 +1,73 @@
-import java.sql.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 class Fenetre extends JFrame{
     public Fenetre(){
 	this.setSize(1200,800);
         this.setLocation(0,10);
+	this.setTitle("Recherche de réservations");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panneau = new JPanel();
-        JTextField numReservation = new JTextField();
-        numReservation.setText("Numéro de Réservation");
-        JTextField nomClient = new JTextField();
-        nomClient.setText("Nom Client");
-        JTextField prenomClient = new JTextField();
-        prenomClient.setText("Prénom Client");
-
-        panneau.setLayout(new GridBagLayout());
+        JTextField numReservation = new JTextField("Nom Client");
+	JTextField nomClient = new JTextField("Nom Client");
+	JTextField prenomClient = new JTextField("Prénom Client");
+	JButton rechercherNum = new JButton("Rechercher");
+	JButton rechercherNom = new JButton("Rechercher");
+	JLabel titre = new JLabel("Rechercher une réservation");
+	panneau.setLayout(new GridBagLayout());
         GridBagConstraints contraintes = new GridBagConstraints();
 
         contraintes.gridx = 1;
-        contraintes.gridy = 0;
+        contraintes.gridy = 1;
         contraintes.ipady = 15;
         contraintes.fill = GridBagConstraints.HORIZONTAL;
         contraintes.anchor = GridBagConstraints.CENTER;
-        contraintes.insets = new Insets(5,200,100,200);
+        contraintes.insets = new Insets(5,400,100,400);
         contraintes.weightx = 0.1;
         contraintes.gridwidth = 2;
 
         panneau.add(numReservation, contraintes);
 
-        contraintes.insets = new Insets(5,200,5,10);
+        contraintes.insets = new Insets(5,400,5,10);
         contraintes.fill = GridBagConstraints.HORIZONTAL;
         contraintes.gridwidth = 1;
-        contraintes.ipady = 15;
+        //contraintes.ipady = 15;
         contraintes.gridx = 1;
-        contraintes.gridy = 1;
+        contraintes.gridy = 2;
 
 	panneau.add(nomClient, contraintes);
 
-	contraintes.insets = new Insets(5,10,5,200);
+	contraintes.insets = new Insets(5,10,5,400);
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
-	contraintes.ipady = 15;
+	//contraintes.ipady = 15;
+	contraintes.gridx = 2;
+	contraintes.gridy = 2;
+
+	panneau.add(prenomClient, contraintes);
+
+	contraintes.fill = GridBagConstraints.HORIZONTAL;
+	//contraintes.ipady = 15;
 	contraintes.gridx = 2;
 	contraintes.gridy = 1;
 
-	panneau.add(prenomClient, contraintes);
+	panneau.add(rechercherNum, contraintes);
+
+	contraintes.fill = GridBagConstraints.HORIZONTAL;
+	//contraintes.ipady = 15;
+	contraintes.gridx = 2;
+	contraintes.gridy = 3;
+
+	panneau.add(rechercherNom, contraintes);
+
+	contraintes.fill = GridBagConstraints.HORIZONTAL;
+	contraintes.gridx = 2;
+	contraintes.gridy = 0;
+		
+	panneau.add(titre, contraintes);
 	this.add(panneau);
-
-	try {
-            Class.forName("org.mariadb.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Pilote indisponible!");
-        }
-
-        try {
-            Connection connexion = DriverManager.getConnection("jdbc:mariadb://dwarves.arda/projetihm","projetihm","mhitejorp");
-            PreparedStatement requete = connexion.prepareStatement("SELECT COUNT(*) FROM Client");
-            ResultSet resultat = requete.executeQuery();
-            if (resultat.first()) {
-                System.out.println(resultat.getInt(1) + " clients");
-            }
-            resultat.close();
-            requete.close();
-            connexion.close();
-        } catch (SQLException e) {
-            System.err.println("Erreur connexion: " + e.getMessage());
-	}
+	
     }
 }
    
