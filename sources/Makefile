@@ -30,6 +30,6 @@ ChambreLitSimple.class : ChambreLitSimple.java Chambre.java
 	$(JC) ChambreLitSimple.java Chambre.java
 
 clean : 
-	-rm -f $(JFILES)
+	-rm *.class 
 
 .PHONY : but clean
