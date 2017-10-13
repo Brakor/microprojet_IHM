@@ -9,6 +9,13 @@ public class View extends JFrame{
     public JPanel content = new JPanel();
     public JPanel lastPage = new JPanel();
     String[] listContent = {"card1", "card2", "card3"};
+    public JTextField numReservation = new JTextField();
+    public JTextField nomClient = new JTextField();
+    public JTextField prenomClient = new JTextField();
+    public JLabel chambreSugg = new JLabel("Chambre suggerée : ");
+    public JLabel caracChambre = new JLabel();
+    public JLabel identite = new JLabel();
+    
     public View() {
 	JFrame f = new JFrame();
 	f.setSize(1200,800);
@@ -21,9 +28,6 @@ public class View extends JFrame{
     }
     
     public void PremiereFenetre(){
-	JTextField numReservation = new JTextField("Numéro Réservation");
-	JTextField nomClient = new JTextField("Nom Client");
-	JTextField prenomClient = new JTextField("Prénom Client");
 	JButton rechercherNum = new JButton("Rechercher");
 	JButton rechercherNom = new JButton("Rechercher");
 	JLabel titre = new JLabel("Rechercher une réservation");
@@ -81,7 +85,7 @@ public class View extends JFrame{
 	panneau.add(titre, contraintes);
 
 	cards.add(panneau, listContent[0]);
-	
+
 	Controleur c1 = new Controleur(1,panneau);
 	Controleur c2 = new Controleur(2,panneau);
 	c1.setView(this);
@@ -91,11 +95,8 @@ public class View extends JFrame{
     }
 
     public void DeuxiemeFenetre() {
-	JLabel chambreSugg = new JLabel("Chambre suggerée :");
 	JLabel autreChambre = new JLabel("Ou choisissez une autre chambre :");
-	JLabel nomClient = new JLabel("nom Client"); //à modifier quand la bd sera reliée
 	JButton accepter = new JButton("Accepter");
-	JLabel caracChambre = new JLabel("caractéristiques de la chambre"); //à modifier, juste pour tester l'affichage
 	JCheckBox possibChambre = new JCheckBox("Test"); //à modifier
 	content.setLayout(new GridBagLayout());
 	GridBagConstraints contraintes = new GridBagConstraints();
@@ -108,7 +109,7 @@ public class View extends JFrame{
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.anchor = GridBagConstraints.CENTER;
 	contraintes.weightx = 0.1;
-	content.add(nomClient, contraintes);
+	content.add(identite, contraintes);
 
 	contraintes.gridx = 0;
 	contraintes.gridy = 1;
@@ -153,7 +154,7 @@ public class View extends JFrame{
 	contraintes.gridx = 1;
 	contraintes.gridy = 0;
 	contraintes.ipady = 20;
-	contraintes.insets = new Insets(50,200,50,200);
+	contraintes.insets = new Insets(50,300,50,300);
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.anchor = GridBagConstraints.CENTER;
 	contraintes.weightx = 0.1;
