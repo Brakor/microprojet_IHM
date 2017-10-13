@@ -17,11 +17,26 @@ public class Controleur implements ActionListener {
 	if (id == 1) {
 	    view.DeuxiemeFenetre();
 	    view.card.next(view.cards);
+	    view.panneau.removeAll();
+	    view.panneau.updateUI();
 	}
-
 	else if (id == 2) {
 	    view.DeuxiemeFenetre();
 	    view.card.next(view.cards);
+	    view.panneau.removeAll();
+	    view.panneau.updateUI();
+	}
+	else if (id == 3) {
+	    view.TroisiemeFenetre();
+	    view.card.next(view.cards);
+	    view.content.removeAll();
+	    view.content.updateUI();
+	}
+	else if (id == 4) {
+	    view.PremiereFenetre();
+	    view.card.next(view.cards);
+	    view.lastPage.removeAll();
+	    view.lastPage.updateUI();
 	}
     }
 
