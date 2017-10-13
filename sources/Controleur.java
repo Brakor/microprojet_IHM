@@ -30,18 +30,20 @@ public class Controleur implements ActionListener {
 		view.DeuxiemeFenetre();
 		view.card.next(view.cards);
 		reference = view.numReservation.getText();
-		int i, nuits, client, categorie;
+		int nuits, categorie;
 		Date date;
-		PreparedStatement listeReservRef = connexion.prepareStatement("SELECT * FROM Reservation WHERE reference='"+reference+"'");
+		String nom,prenom;
+		PreparedStatement listeReservRef = connexion.prepareStatement("SELECT * FROM Reservation JOIN Client WHERE reference='"+reference+"'");
 		ResultSet resultListRef = listeReservRef.executeQuery();
 		while (resultListRef.next()) {
-		    i = resultListRef.getInt(1);
+		    prenom = resultListRef.getString(8);
+		    nom = resultListRef.getString(9);
 		    reference = resultListRef.getString(2);
 		    date = resultListRef.getDate(3);
 		    nuits = resultListRef.getInt(4);
 		    categorie = resultListRef.getInt(5);
-		    client = resultListRef.getInt(6);
-		    view.caracChambre.setText(""+i+" "+reference+" "+date+" "+nuits+" "+categorie+" "+client);
+		    view.caracChambre.setText(" "+reference+" "+date+" "+nuits+" "+categorie);
+		    view.identite.setText(""+prenom+" "+nom);
 		}
 		view.panneau.removeAll();
 		view.panneau.updateUI();
@@ -51,14 +53,20 @@ public class Controleur implements ActionListener {
 		view.card.next(view.cards);
 		nom = view.nomClient.getText();
 		prenom = view.prenomClient.getText();
-		int i;
-		PreparedStatement listeReservNom = connexion.prepareStatement("SELECT * FROM Client WHERE nom='"+nom+"' AND prenom='"+prenom+"'");
+		int nuits,categorie;
+		Date date;
+		String reference;
+		PreparedStatement listeReservNom = connexion.prepareStatement("SELECT * FROM Client JOIN Reservation WHERE nom='"+nom+"' AND prenom='"+prenom+"'");
 		ResultSet resultListNom = listeReservNom.executeQuery();
 		while (resultListNom.next()) {
-		    i=resultListNom.getInt(1);
 		    nom=resultListNom.getString(2);
 		    prenom=resultListNom.getString(3);
+		    reference=resultListNom.getString(5);
+		    date=resultListNom.getDate(6);
+		    nuits=resultListNom.getInt(7);
+		    categorie=resultListNom.getInt(8);
 		    view.identite.setText(""+prenom+" "+nom);
+		    view.caracChambre.setText(" "+reference+" "+date+" "+nuits+" "+categorie);
 		}
 		view.panneau.removeAll();
 		view.panneau.updateUI();
