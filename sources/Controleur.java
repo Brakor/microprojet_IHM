@@ -26,12 +26,13 @@ public class Controleur implements ActionListener {
 
 	try {
 	    Connection connexion = DriverManager.getConnection("jdbc:mariadb://dwarves.arda/projetihm","projetihm","mhitejorp");
+	    Connection connexion2 = DriverManager.getConnection("jdbc:mariadb://dwarves.arda/simonr","simonr","Azertyuiop");
 	    if (id == 1) {
 		view.DeuxiemeFenetre();
 		view.card.next(view.cards);
 		reference = view.numReservation.getText();
-		int nuits, categorie;
-		Date date;
+		int nuits=0, categorie=0, numDeChambre=0;
+		Date date='2017-22-09';
 		String nom,prenom;
 		PreparedStatement listeReservRef = connexion.prepareStatement("SELECT * FROM Reservation JOIN Client WHERE reference='"+reference+"'");
 		ResultSet resultListRef = listeReservRef.executeQuery();
@@ -42,20 +43,29 @@ public class Controleur implements ActionListener {
 		    date = resultListRef.getDate(3);
 		    nuits = resultListRef.getInt(4);
 		    categorie = resultListRef.getInt(5);
-		    view.caracChambre.setText(" "+reference+" "+date+" "+nuits+" "+categorie);
 		    view.identite.setText(""+prenom+" "+nom);
 		}
+		PreparedStatement numChambre = connexion2.prepareStatement("SELECT * FROM Chambre WHERE categorie='"+categorie+"' AND disponible = '1'");
+                ResultSet resultNumChambre = numChambre.executeQuery();
+                if(resultNumChambre.first()) {
+                    numDeChambre = resultNumChambre.getInt(4);
+		}
+                view.caracChambre.setText("Ref: "+reference+"Date: "+date+"Nuits: "+nuits+"Categorie: "+categorie+"\n Numero de chambre: "+numDeChambre);
 		view.panneau.removeAll();
 		view.panneau.updateUI();
+		listeReservRef.close();
+		resultListRef.close();
+		numChambre.close();
+		resultNumChambre.close();
 	    }
 	    else if (id == 2) {
 		view.DeuxiemeFenetre();
 		view.card.next(view.cards);
 		nom = view.nomClient.getText();
 		prenom = view.prenomClient.getText();
-		int nuits,categorie;
-		Date date;
-		String reference;
+		int nuits=0,categorie=0, numDeChambre=0;
+		Date date='2017-22-09';
+		String reference="ab";
 		PreparedStatement listeReservNom = connexion.prepareStatement("SELECT * FROM Client JOIN Reservation WHERE nom='"+nom+"' AND prenom='"+prenom+"'");
 		ResultSet resultListNom = listeReservNom.executeQuery();
 		while (resultListNom.next()) {
@@ -66,14 +76,27 @@ public class Controleur implements ActionListener {
 		    nuits=resultListNom.getInt(7);
 		    categorie=resultListNom.getInt(8);
 		    view.identite.setText(""+prenom+" "+nom);
-		    view.caracChambre.setText(" "+reference+" "+date+" "+nuits+" "+categorie);
+		    view.caracChambre.setText("Ref: "+reference+"Date: "+date+"Nuits: "+nuits+"Categorie: "+categorie);
 		}
+		PreparedStatement numeroChambre = connexion2.prepareStatement("SELECT * FROM Chambre WHERE categorie='"+categorie+"' AND disponible = '1'");
+		ResultSet resultNumeroChambre = numeroChambre.executeQuery();
+		if(resultNumeroChambre.first()) {
+		    numDeChambre = resultNumeroChambre.getInt(4);
+		}
+		view.caracChambre.setText("Ref: "+reference+"Date: "+date+"Nuits: "+nuits+"Categorie: "+categorie+"\n Numero de chambre: "+numDeChambre);
 		view.panneau.removeAll();
 		view.panneau.updateUI();
+		listeReservNom.close();
+		resultListNom.close();
+		numeroChambre.close();
+		resultNumeroChambre.close();
 	    }
 	    else if (id == 3) {
 		view.TroisiemeFenetre();
 		view.card.next(view.cards);
+		nom = view.nomClient.getText();
+		prenom = view.prenomClient.getText();
+		reference = view.numReservation.getText();
 		view.content.removeAll();
 		view.content.updateUI();
 	    }
@@ -84,6 +107,7 @@ public class Controleur implements ActionListener {
 		view.lastPage.updateUI();
 	    }
 	    connexion.close();
+	    connexion2.close();
 	} catch (SQLException b) {
 	    System.err.println("Erreur connexion: " + b.getMessage());
 	}
