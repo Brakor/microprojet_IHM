@@ -15,6 +15,12 @@ public class View extends JFrame{
     public JLabel chambreSugg = new JLabel("Chambre suggerée : ");
     public JLabel caracChambre = new JLabel();
     public JLabel identite = new JLabel();
+    public JLabel idClient = new JLabel();
+    public JLabel chambre = new JLabel();
+    public JLabel numChambre = new JLabel();
+    public JLabel numch = new JLabel();
+    public JLabel catego = new JLabel();
+    public JLabel idcl = new JLabel();
     
     public View() {
 	JFrame f = new JFrame();
@@ -105,7 +111,7 @@ public class View extends JFrame{
 	contraintes.gridx = 1;
 	contraintes.gridy = 0;
 	contraintes.ipady = 20;
-	contraintes.insets = new Insets(15,50,50,150);
+	contraintes.insets = new Insets(15,5,20,15);
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.anchor = GridBagConstraints.CENTER;
 	contraintes.weightx = 0.1;
@@ -127,7 +133,6 @@ public class View extends JFrame{
 
 	contraintes.gridx = 2;
 	contraintes.gridy = 1;
-	contraintes.gridwidth = 2;
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	content.add(autreChambre, contraintes);
 
@@ -144,9 +149,6 @@ public class View extends JFrame{
     }
 
     public void TroisiemeFenetre() {
-	JLabel nomClient = new JLabel("Nom Client"); //à modifier
-	JLabel chambre = new JLabel("Chambre attribuée :");
-	JLabel numChambre = new JLabel("Numéro de chambre");//à modifier
 	JButton menu = new JButton("Revenir au menu");
 	lastPage.setLayout(new GridBagLayout());
 	GridBagConstraints contraintes = new GridBagConstraints();
@@ -158,7 +160,7 @@ public class View extends JFrame{
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.anchor = GridBagConstraints.CENTER;
 	contraintes.weightx = 0.1;
-        lastPage.add(nomClient, contraintes);
+        lastPage.add(idClient, contraintes);
 
 	contraintes.gridx = 1;
 	contraintes.gridy = 1;
