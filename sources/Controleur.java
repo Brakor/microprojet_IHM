@@ -33,7 +33,6 @@ public class Controleur implements ActionListener {
 		view.card.next(view.cards);
 		reference = view.numReservation.getText();
 		int nuits=0, categorie=0, numDeChambre=0,idClient = 0;
-		String nom,prenom;
 		PreparedStatement listeReservRef = connexion.prepareStatement("SELECT * FROM Reservation WHERE reference='"+reference+"' AND debut='2018-01-06'");
 		ResultSet resultListRef = listeReservRef.executeQuery();
 		while (resultListRef.next()) {
@@ -49,7 +48,7 @@ public class Controleur implements ActionListener {
 		if (resultatClient.first()) {
 		    nom=resultatClient.getString(3);
 		    prenom=resultatClient.getString(2);
-		    view.identite.setText("Nom du client : "+prenom+" "+nom);
+		    view.identite.setText(""+prenom+" "+nom);
 		}
 		PreparedStatement numChambre = connexion2.prepareStatement("SELECT * FROM Chambre WHERE categorie='"+categorie+"' AND disponible = '1'");
                 ResultSet resultNumChambre = numChambre.executeQuery();
@@ -110,10 +109,9 @@ public class Controleur implements ActionListener {
 	    else if (id == 3) {
 		view.TroisiemeFenetre();
 		view.card.next(view.cards);
-		nom = view.nomClient.getText();
-		prenom = view.prenomClient.getText();
+		nom = view.identite.getText();
 		reference = view.numReservation.getText();
-		view.idClient.setText("Nom du client : "+nom+" "+prenom);
+		view.idClient.setText("Nom du client : "+nom);
 		String categorie, numDeChambre;
 		int categor = Integer.parseInt(view.catego.getText());
 		int numchamb = Integer.parseInt(view.numch.getText());

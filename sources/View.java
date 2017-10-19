@@ -103,7 +103,6 @@ public class View extends JFrame{
     public void DeuxiemeFenetre() {
 	JLabel autreChambre = new JLabel("Ou choisissez une autre chambre :");
 	JButton accepter = new JButton("Accepter");
-	JCheckBox possibChambre = new JCheckBox("Test"); //à modifier
 	content.setLayout(new GridBagLayout());
 	GridBagConstraints contraintes = new GridBagConstraints();
 
@@ -136,9 +135,9 @@ public class View extends JFrame{
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	content.add(autreChambre, contraintes);
 
-	contraintes.gridx = 2;
-	contraintes.gridy = 2;
-	content.add(possibChambre, contraintes);
+	//contraintes.gridx = 2;
+	//contraintes.gridy = 2;
+	//content.add(, contraintes);
 
 	/* Ajout du Panel contenant tous les éléments au CardLayout */
 	cards.add(content, listContent[1]);
