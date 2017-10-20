@@ -9,12 +9,12 @@ public class Client{
     this.id = num;
   }
 
-  public void setNom(String n){
-    this.nom = n;
+  public void setNom(String newNom){
+    this.nom = newNom;
   }
 
-  public void setPrenom(String p){
-    this.prenom = p;
+  public void setPrenom(String newPrenom){
+    this.prenom = newPrenom;
   }
 
   public String getNom(){

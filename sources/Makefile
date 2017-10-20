@@ -6,8 +6,7 @@ JFILES = Chambre.class \
 	  ChambreLitDouble.class \
 	  ChambreLitSimple.class \
 	  Reservation.class \
-	  View.class \
-	  Main.class
+	  View.class 
 
 JC = javac
 
@@ -34,11 +33,8 @@ ChambreLitSimple.class : ChambreLitSimple.java Chambre.java
 View.class : View.java
 	$(JC) View.java
 
-Main.class : Main.java
-	$(JC) Main.java
-
 test : 
-	-java -cp "/export/documents/mariadb-client.jar:." Main
+	-java -cp "/export/documents/mariadb-client.jar:." View
 
 clean : 
 	-rm *.class 
