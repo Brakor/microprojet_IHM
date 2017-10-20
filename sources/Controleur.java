@@ -26,8 +26,8 @@ public class Controleur implements ActionListener {
     }
 
     try {
-      Connection connexion = DriverManager.getConnection("jdbc:mariadb://dwarves.arda/projetihm","projetihm","mhitejorp");
-      Connection connexion2 = DriverManager.getConnection("jdbc:mariadb://dwarves.arda/simonr","simonr","Azertyuiop");
+      Connection connexion = DriverManager.getConnection("jdbc:mariadb://dwarves.iut-fbleau.fr/projetihm","projetihm","mhitejorp");
+      Connection connexion2 = DriverManager.getConnection("jdbc:mariadb://dwarves.iut-fbleau.fr/simonr","simonr","Azertyuiop");
       if (id == 1) {
         view.DeuxiemeFenetre();
         view.card.next(view.cards);

@@ -9,9 +9,9 @@ public class View extends JFrame{
     public JPanel content = new JPanel();
     public JPanel lastPage = new JPanel();
     String[] listContent = {"card1", "card2", "card3"};
-    public JTextField numReservation = new JTextField();
-    public JTextField nomClient = new JTextField();
-    public JTextField prenomClient = new JTextField();
+    public JTextField numReservation = new JTextField("Reference");
+    public JTextField nomClient = new JTextField("Nom");
+    public JTextField prenomClient = new JTextField("Prenom");
     public JLabel chambreSugg = new JLabel("Chambre suggerée : ");
     public JLabel caracChambre = new JLabel();
     public JLabel identite = new JLabel();
@@ -24,7 +24,7 @@ public class View extends JFrame{
     
     public View() {
 	JFrame f = new JFrame();
-	f.setSize(1200,800);
+	f.setSize(800,600);
 	f.setLocation(0,10);
 	f.setTitle("Gestion des réservations");
 	f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,19 +57,19 @@ public class View extends JFrame{
         contraintes.ipady = 15;
         contraintes.fill = GridBagConstraints.HORIZONTAL;
         contraintes.anchor = GridBagConstraints.CENTER;
-        contraintes.insets = new Insets(5,400,100,400);
+        contraintes.insets = new Insets(0,200,100,200);
         contraintes.weightx = 0.1;
         contraintes.gridwidth = 2;
         panneau.add(numReservation, contraintes);
 
-        contraintes.insets = new Insets(5,400,5,10);
+        contraintes.insets = new Insets(5,200,5,10);
         contraintes.fill = GridBagConstraints.HORIZONTAL;
         contraintes.gridwidth = 1;
         contraintes.gridx = 1;
         contraintes.gridy = 2;
 	panneau.add(nomClient, contraintes);
 
-	contraintes.insets = new Insets(5,10,5,400);
+	contraintes.insets = new Insets(5,10,5,200);
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.gridx = 2;
 	contraintes.gridy = 2;
@@ -107,7 +107,7 @@ public class View extends JFrame{
 	GridBagConstraints contraintes = new GridBagConstraints();
 
 	/* Implémentation du GridBagLayout avec toutes les contraintes pour chaque élément */
-	contraintes.gridx = 1;
+	contraintes.gridx = 0;
 	contraintes.gridy = 0;
 	contraintes.ipady = 20;
 	contraintes.insets = new Insets(15,5,20,15);
@@ -155,7 +155,7 @@ public class View extends JFrame{
 	contraintes.gridx = 1;
 	contraintes.gridy = 0;
 	contraintes.ipady = 20;
-	contraintes.insets = new Insets(50,300,50,300);
+	contraintes.insets = new Insets(50,100,50,100);
 	contraintes.fill = GridBagConstraints.HORIZONTAL;
 	contraintes.anchor = GridBagConstraints.CENTER;
 	contraintes.weightx = 0.1;
