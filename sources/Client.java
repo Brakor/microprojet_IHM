@@ -1,3 +1,5 @@
+// Par Yann Pascoet et Romain Simon
+
 public class Client{
   private String nom;
   private String prenom;
