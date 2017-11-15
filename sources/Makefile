@@ -34,7 +34,7 @@ View.class : View.java
 	$(JC) View.java
 
 test : 
-	-java -cp "/export/documents/mariadb-client.jar:." View
+	-java -cp "./packages/mariadb-client.jar:." View
 
 clean : 
 	-rm *.class 
