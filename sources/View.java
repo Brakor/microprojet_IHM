@@ -1,3 +1,5 @@
+// Par Yann Pascoet et Romain Simon
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
