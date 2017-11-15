@@ -1,3 +1,5 @@
+// Par Yann Pascoet et Romain Simon
+
 import java.util.Date;
 
 public class Reservation{
