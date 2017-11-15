@@ -1,3 +1,5 @@
+// Par Yann Pascoet et Romain Simon
+
 public abstract class Chambre{
   private byte numero;
   private boolean proprete;
